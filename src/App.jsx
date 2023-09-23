@@ -18,12 +18,12 @@ import Form from './components/Form';
 import PageNotFound from './pages/PageNotFound';
 import SpinnerFullPage from './components/SpinnerFullPage';
 
-const Homepage = lazy(()=>import('./pages/HomePage'))
-const Pricing = lazy(()=>import('./pages/Pricing'))
-const Login = lazy(()=>import('./pages/login'))
-const Product = lazy(()=>import('./pages/Product'))
-const Signup = lazy(()=>import('./pages/signup'))
-const AppLayout = lazy(()=>import('./pages/AppLayout'))
+const Homepage = lazy(()=>import('./pages/Homepage'))
+const Pricing = lazy(()=>import('./pages/Pricing.jsx'))
+const Login = lazy(()=>import('./pages/Login'))
+const Product = lazy(()=>import('./pages/Product.jsx'))
+const Signup = lazy(()=>import('./pages/Signup'))
+const AppLayout = lazy(()=>import('./pages/AppLayout.jsx'))
 
 
 export default function App() {
