@@ -1,0 +1,64 @@
+{
+  "cities": [
+    {
+      "cityName": "Budapest",
+      "country": "Hungary",
+      "emoji": "🇭🇺",
+      "date": "2023-09-16T07:19:15.014Z",
+      "notes": "Amazing City!",
+      "position": {
+        "lat": 47.42468350494979,
+        "lng": 19.053585331393517
+      },
+      "id": 98443202
+    },
+    {
+      "cityName": "Paris",
+      "country": "France",
+      "emoji": "🇫🇷",
+      "date": "2023-09-18T08:52:33.883Z",
+      "notes": "It was an amazing trip!",
+      "position": {
+        "lat": 48.84412973106455,
+        "lng": 2.3511939348096655
+      },
+      "id": 98443203
+    },
+    {
+      "cityName": "Dublin",
+      "country": "Ireland",
+      "emoji": "🇮🇪",
+      "date": "2023-09-19T10:19:36.654Z",
+      "notes": "Pretty nice!",
+      "position": {
+        "lat": 53.24970177841593,
+        "lng": -6.198304140332397
+      },
+      "id": 98443204
+    },
+    {
+      "cityName": "Berlin",
+      "country": "Germany",
+      "emoji": "🇩🇪",
+      "date": "2023-07-11T11:01:40.000Z",
+      "notes": "Wonderful place to visit.",
+      "position": {
+        "lat": 52.513859971164365,
+        "lng": 13.392092488028482
+      },
+      "id": 98443205
+    },
+    {
+      "cityName": "Greater London",
+      "country": "United Kingdom of Great Britain and Northern Ireland (the)",
+      "emoji": "🇬🇧",
+      "date": "2023-09-23T09:24:20.052Z",
+      "notes": "Great History!",
+      "position": {
+        "lat": 51.42050923642555,
+        "lng": -0.1434273798972097
+      },
+      "id": 98443206
+    }
+  ]
+}

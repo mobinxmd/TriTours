@@ -1,0 +1,110 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav ul{
+  display: flex;
+  list-style: none;
+  align-items: center;
+  gap: 4rem;
+}
+.open{
+  display: flex !important;
+}
+
+
+.nav a:link,
+.nav a:visited {
+  text-decoration: none;
+  color: var(--color-light--2);
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* CSS Modules feature */
+.nav a:global(.active) {
+  color: var(--color-brand--2);
+}
+.nav .hum{
+  display: none;
+}
+
+a.ctaLink:link,
+a.ctaLink:visited {
+  background-color: var(--color-brand--2);
+  color: var(--color-light--0);
+  padding: 0.8rem 2rem;
+  border-radius: 7px;
+}
+a.ctaLink_1:link,
+a.ctaLink_1:visited {
+  background-color: var(--color-light--1);
+  color: var(--color-dark--0);
+  padding: 0.8rem 2rem;
+  border-radius: 7px;
+}
+
+@media only screen and (max-width: 720px) {
+  .nav .hum{
+    display: block;
+    font-size: 20px;
+    position: relative;
+  }
+  .nav ul{
+    background-color: rgba(0, 0, 0, 0.239);
+    border-radius: 7px;
+    position: absolute;
+    list-style: none;
+    display: none ;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.0rem;
+    right: 10px;
+    padding: 5px;
+    top: 5%;
+  }
+  .nav a:link,
+  .nav a:visited {
+    font-size: 1.0rem;
+  }
+  .nav li{
+    padding: 4px;
+  }
+  a.ctaLink:link,
+  a.ctaLink:visited {
+    background-color: var(--color-brand--2);
+    color: var(--color-light--0);
+    padding: 0.5rem 1rem;
+    border-radius: 7px;
+  }
+  a.ctaLink_1:link,
+  a.ctaLink_1:visited {
+    background-color: var(--color-light--1);
+    color: var(--color-dark--0);
+    padding: 0.5rem 1rem;
+    border-radius: 7px;
+  }
+  .nav li:nth-child(-n + 2):hover{
+    background-color: rgba(92, 92, 92, 0.539);
+    border-radius: 7px;
+  }
+}
+@media only screen and (max-width: 575px) {
+  .nav .hum{
+    display: block;
+    font-size: 18px;
+    position: relative;
+  }
+  .nav ul{
+    position: absolute;
+    right: 5px;
+    top: 6%;
+  }
+  .nav a:link,
+  .nav a:visited {
+    font-size: 1.0rem;
+  }
+}

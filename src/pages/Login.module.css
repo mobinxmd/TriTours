@@ -1,0 +1,99 @@
+.login {
+  margin: 2.5rem;
+  padding: 2.5rem 5rem;
+  background-color: var(--color-dark--1);
+  min-height: calc(100vh - 5rem);
+}
+
+.form {
+  background-color: var(--color-dark--2);
+  border-radius: 7px;
+  padding: 2rem 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  /* Different from other form */
+  width: 48rem;
+  margin: 8rem auto;
+}
+.btn{
+  display:  flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.link{
+  color: var(--color-brand--2);
+  padding: 10px;
+  font-weight: medium;
+}
+.error{
+  color: var(--color-brand--1);
+  font-weight: bold;
+  font-size: small;
+  padding: 10px;
+}
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.button {
+  background-color: var(--color-brand--2);
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+}
+.loginInfo{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-light--1);
+  opacity: 0.3;
+}
+
+@media only screen and (max-width: 720px){
+  .login {
+    margin: 0;
+    padding: 1.5rem 2rem;
+    min-height:100vh;
+  }
+  .form {
+    /* Different from other form */
+    width: 100%;
+    margin: 8rem auto;
+  }
+ 
+  
+}
+@media only screen and (max-width: 575px){
+
+  .form {
+    /* Different from other form */
+    width: 100%;
+    margin: 8rem auto;
+    gap: 1rem;
+  }
+  label{
+    font-size: 1.2rem;
+  }
+  input{
+    padding: 0.5rem 1.2rem;
+    font-size: 1.2rem;
+  }
+  .btn{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  .span{
+    margin-top: 10px;
+    color: gray;
+  }
+
+ 
+  
+}

@@ -1,0 +1,3 @@
+.logo {
+  height: clamp(2rem,5vw, 5.2rem);
+}

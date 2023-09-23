@@ -1,0 +1,13 @@
+.spinnerFullpage {
+  margin: 2.5rem;
+  height: calc(100vh - 5rem);
+  background-color: var(--color-dark--1);
+}
+
+
+@media only screen and (max-width: 720px){
+  .spinnerFullpage{
+    margin: 0;
+    height: 100vh;
+  }
+}
