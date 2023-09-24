@@ -51,8 +51,8 @@
     margin-bottom: 2.0rem;
   }
   .homepage a{
-    width: 150px;
-    font-size: 10px !important;
+    
+    font-size: 14px !important;
   }
   .homepage{
     padding: 1.5rem 2rem;
@@ -61,14 +61,15 @@
 @media only screen and (max-width: 575px) {
   .homepage{
     margin: 0;
-    height: 100vh;
+    /* height: 100vh; */
+    height: 100svh;
   }
   .homepage h1 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
   }
   .homepage h2 {
     width: 95%;
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
 }

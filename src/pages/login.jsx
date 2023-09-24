@@ -60,7 +60,7 @@ const navigate = useNavigate()
         </>}
       </form>
       <span className={styles.loginInfo}>
-        <h4>{"Use the Demo Account version below to login if you don't want to Sign up"}</h4>
+        <h4>{"Use the Demo Account version below to login"}</h4>
         <p>
           Email: demo@gmail.com
           <br /> 

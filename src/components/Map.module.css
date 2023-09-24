@@ -43,9 +43,9 @@
   position: absolute;
   font-size: large;
   top: 2.2rem;
-  left: 4.4rem;
+  left: 1rem;
   background-color: var(--color-dark--1);
-  padding: 0.5rem 1rem;
+ 
   border-radius: 7px;
   z-index: 990;
 }
@@ -53,19 +53,21 @@
 @media only screen and (max-width: 720px) {
   .menu {
     display: block;
+    padding: 5px 10px;
   }
 }
 @media only screen and (max-width: 575px) {
   .menu{
     top: 1.2rem;
-   padding: 1px 10px;
-    padding-top: 2px;
+    padding: 5px 10px;
+    padding-top: 7px;
+   
   }
   .positionBtn{
     margin: 10px;
   }
-  .leaflet-bar{
-    height: 20px;
+  .leaflet-control-zoom .leaflet-bar .leaflet-control{
+    display: none;
   }
   :global(.leaflet-popup .leaflet-popup-content) {
     font-size: 1rem;

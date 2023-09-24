@@ -53,6 +53,8 @@ export default function Map() {
           zoom={14}
           center={mapPosition}
           scrollWheelZoom={true}
+          zoomControl={false}
+          
           
         >
           <TileLayer

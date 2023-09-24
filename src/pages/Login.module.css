@@ -47,6 +47,7 @@
 }
 .loginInfo{
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   width: 100%;
   justify-content: center;
@@ -60,6 +61,7 @@
     margin: 0;
     padding: 1.5rem 2rem;
     min-height:100vh;
+    
   }
   .form {
     /* Different from other form */
@@ -70,7 +72,9 @@
   
 }
 @media only screen and (max-width: 575px){
-
+  .login{
+    min-height: 100svh;
+  }
   .form {
     /* Different from other form */
     width: 100%;
@@ -93,6 +97,7 @@
     margin-top: 10px;
     color: gray;
   }
+  
 
  
   

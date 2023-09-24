@@ -58,7 +58,7 @@
   .product{
     margin: 0;
     padding: 1rem 2rem;
-    min-height: 100vh;
+    min-height: 100svh;
    }
    .product section{
     width: 90%;
@@ -81,7 +81,7 @@
     width: 0;
    }
    .product h2 {
-    font-size: 1.5rem;
+    font-size: 2rem;
    }
    .product p {
     font-size: 1.2rem;
