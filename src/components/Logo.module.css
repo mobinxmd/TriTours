@@ -4,5 +4,6 @@
 @media only screen and (max-width: 575px){
  .logo{
   height: 2.2rem;
+  width: 90px;
  }
 }
