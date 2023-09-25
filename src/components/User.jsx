@@ -42,7 +42,7 @@ function User() {
       <img src={mainUser.avatar_url} alt={mainUser.name} />
       <span>Welcome, {mainUser.name}</span>
       <button onClick={handleClick}>
-        {isLoading ? <Spinner size={"15px"} /> : "Log out"}
+        {isLoading ? <Spinner size={"20px"} /> : "Log out"}
       </button>
     </div>
   );

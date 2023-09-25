@@ -29,11 +29,7 @@ function AuthProvider({ children }) {
     initialState
   );
 
-  // function userLogin(email, password){
-  //     if(email === DEMO_USER.email && password === DEMO_USER.password){
-  //         dispatch({type: "login", payLoad: DEMO_USER})
-  //     }
-  // }
+  
   async function userLogin(userEmail, userPassword) {
     if (userEmail.length <= 0 && userPassword.length <= 0)
       return dispatch({

@@ -10,6 +10,7 @@ import Message from './Message';
 import { useCities } from "../contexts/citiesContext";
 
 
+
 const BASE_URL = "https://api.bigdatacloud.net/data/reverse-geocode-client?";
 
 export function ConvertToEmoji(countryCode) {

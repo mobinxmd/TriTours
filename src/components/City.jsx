@@ -22,9 +22,6 @@ function City() {
   const navigate = useNavigate();
   const {id} =useParams()
 
-  
-
-
   useEffect(() => {
     fetchCity(id)
     

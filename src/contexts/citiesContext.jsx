@@ -1,7 +1,14 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useReducer } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useReducer,
+} from "react";
+import { supabase } from "../supabase/supabaseClient";
 
 const CitiesContext = createContext();
-const BASE_URL = "http://localhost:9000/";
+// const BASE_URL = "http://localhost:9000/";
 
 const initialState = {
   cities: [],
@@ -35,7 +42,9 @@ function reducer(state, action) {
     case "rejected":
       return { ...state, isLoading: false, error: action.payLoad };
     case "open":
-      return {...state, isOpen: !state.isOpen};
+      return { ...state, isOpen: !state.isOpen };
+    case "openForm":
+      return { ...state, isOpen: action.payLoad };
     default:
       throw new Error("Unknown action!");
   }
@@ -45,90 +54,94 @@ function CitiesProvider({ children }) {
   // const [cities, setCities] = useState([]);
   // const [isLoading, setLoading] = useState(false);
   // const [currentCity, setCurrentCity] = useState({});
-  const [{isOpen, cities, isLoading, currentCity }, dispatch] = useReducer(
+  const [{ isOpen, cities, isLoading, currentCity }, dispatch] = useReducer(
     reducer,
     initialState
   );
 
-  useEffect(function () {
-    async function fetchData() {
-      dispatch({ type: "loading" });
-      try {
-        const res = await fetch(`${BASE_URL}cities`);
-        const data = await res.json();
-        dispatch({ type: "cities/loaded", payLoad: data });
-      } catch {
-        dispatch({ type: "rejected", payLoad: "could not load cities!" });
-      }
-    }
-    fetchData();
+  const fetchData = useCallback(async function fetchData() {
+    dispatch({ type: "loading" });
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    const { data, error } = await supabase
+      .from("cities")
+      .select("*")
+      .eq("uid", user?.id);
+    dispatch({ type: "cities/loaded", payLoad: data });
+    if (error) console.log(error);
+    if (error) dispatch({ type: "rejected", payLoad: error });
   }, []);
 
-  const fetchCity = useCallback(function fetchCity(id) {
-    if(+id === currentCity.id) return;
-    async function fetchData() {
-      dispatch({ type: "loading" });
-      try {
-        const res = await fetch(`http://localhost:9000/cities/${id}`);
-        const data = await res.json();
-        dispatch({ type: "city/loaded", payLoad: data });
-      } catch {
-        dispatch({ type: "rejected", payLoad: "could not load city!" });
+  const fetchCity = useCallback(
+    function fetchCity(id) {
+      if (+id === currentCity.id) return;
+      async function fetchData() {
+        dispatch({ type: "loading" });
+        try {
+          const { data, error } = await supabase
+          .from('cities')
+          .select("*")
+          .eq('id', id)
+          if(error)throw Error(error)
+
+          dispatch({ type: "city/loaded", payLoad: data[0] });
+        } catch (error){
+          dispatch({ type: "rejected", payLoad: "could not load city!" });
+        }
       }
-    }
-    fetchData();
-  },[currentCity.id])
+      fetchData();
+    },
+    [currentCity.id]
+  );
 
   async function createCity(newCity) {
-    try {
-      dispatch({ type: "loading" });
-      const res = await fetch(`http://localhost:9000/cities/`, {
-        method: "POST",
-        body: JSON.stringify(newCity),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-      dispatch({ type: "city/created", payLoad: data });
-    } catch {
-      dispatch({ type: "rejected", payLoad: "Error while creating new city!" });
-    }
+    dispatch({ type: "loading" });
+
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+    const { data, error } = await supabase
+      .from("cities")
+      .insert({ uid: user.id, ...newCity })
+      .select();
+    if (data) dispatch({ type: "city/created", payLoad: data[0] });
+
+    if (error) dispatch({ type: "rejected", payLoad: error });
   }
 
   async function deleteCity(id) {
     try {
-      dispatch({ type: "loading" });
-      await fetch(`http://localhost:9000/cities/${id}`, {
-        method: "DELETE",
-      });
+      const { error } = await supabase
+      .from('cities')
+      .delete()
+      .eq('id', id)
       dispatch({ type: "city/deleted", payLoad: id });
+      console.log(error)
     } catch {
       dispatch({ type: "rejected", payLoad: "Error while deleting the city!" });
     }
   }
-  function handleOpen(){
-    dispatch({type: "open"})
+  function handleOpen() {
+    dispatch({ type: "open" });
   }
-  const value = useMemo(()=>{
+  const value = useMemo(() => {
     return {
       cities,
       isLoading,
       currentCity,
-      fetchCity,
       createCity,
       deleteCity,
       handleOpen,
       isOpen,
-    }
-  },[cities, currentCity, fetchCity, isLoading, isOpen])
+      fetchCity,
+      dispatch,
+      fetchData,
+    };
+  }, [fetchData,fetchCity, cities, currentCity, isLoading, isOpen]);
 
   return (
-    <CitiesContext.Provider
-      value={value}
-    >
-      {children}
-    </CitiesContext.Provider>
+    <CitiesContext.Provider value={value}>{children}</CitiesContext.Provider>
   );
 }
 

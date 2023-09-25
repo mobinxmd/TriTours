@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import styles from "./Map.module.css";
 import Button from "./Button";
-import Spinner from './Spinner';
+import Spinner from "./Spinner";
 import {
   MapContainer,
   Marker,
@@ -14,18 +14,18 @@ import { useEffect, useState } from "react";
 import { useCities } from "../contexts/citiesContext";
 import { useGeolocation } from "../hooks/useGeolocation";
 import { useUrlPosition } from "../hooks/useUrlPosition";
-import {MdOutlineMenu} from 'react-icons/md';
+import { MdOutlineMenu } from "react-icons/md";
 import User from "./User";
 
 export default function Map() {
   const [mapPosition, setMapPosition] = useState([40, -3.7337]);
-  const { cities,handleOpen } = useCities();
+  const { cities, handleOpen } = useCities();
   const {
     isLoading: isLoadingGeolocation,
     position: geolocationPosition,
     getPosition,
   } = useGeolocation();
-  const {lat, lng} = useUrlPosition();
+  const { lat, lng } = useUrlPosition();
 
   useEffect(() => {
     if (lat && lng) setMapPosition([lat, lng]);
@@ -38,24 +38,28 @@ export default function Map() {
 
   return (
     <>
-      <div className={styles.mapContainer} >
+      <div className={styles.mapContainer}>
         <User />
 
-        <span onClick={handleOpen} className={styles.menu}><MdOutlineMenu /></span>
+        <span onClick={handleOpen} className={styles.menu}>
+          <MdOutlineMenu />
+        </span>
 
-       { 
-        <Button type={"position"} onClick={getPosition}>
-          {isLoadingGeolocation ? <Spinner size={"25px"} /> : "Get Your Position"}
-        </Button>
-       }
+        {
+          <Button type={"position"} onClick={getPosition}>
+            {isLoadingGeolocation ? (
+              <Spinner size={"25px"} />
+            ) : (
+              "Get Your Position"
+            )}
+          </Button>
+        }
         <MapContainer
           className={styles.map}
           zoom={14}
           center={mapPosition}
           scrollWheelZoom={true}
           zoomControl={false}
-          
-          
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -67,8 +71,8 @@ export default function Map() {
               key={city.id}
             >
               <Popup>
-                <h3>{city.cityName}</h3> 
-                <p>🎇{city.notes }</p>
+                <h3>{city.cityName}</h3>
+                <p>🎇{city.notes}</p>
               </Popup>
             </Marker>
           ))}
@@ -87,12 +91,11 @@ function ChangeCenter({ position }) {
 
 function DetectClick() {
   const navigate = useNavigate();
-  const {handleOpen} = useCities();
+  const { dispatch } = useCities();
   useMapEvents({
     click: (e) => {
-      handleOpen(),
-      navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`)
-    }
- 
+      dispatch({ type: "openForm", payLoad: true }),
+        navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
+    },
   });
 }

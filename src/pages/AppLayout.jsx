@@ -9,7 +9,7 @@ export default function AppLayout() {
   return (
     <>
       <div className={styles.app}>
-        <div className={!isOpen ? styles.open : styles.close}>
+        <div className={isOpen ? styles.open : styles.close || ""}>
           <Sidebar />
         </div>
         <Map />

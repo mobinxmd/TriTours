@@ -4,11 +4,10 @@ import styles from "./Homepage.module.css";
 import { useAuth } from "../contexts/authContext";
 import { useEffect } from "react";
 
+
 export default function Homepage() {
   const {userAuthenticated, userLogout} = useAuth()
 
-
-  
 useEffect(() => {
  userLogout()
 }, [])
